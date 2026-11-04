@@ -11,6 +11,9 @@
 .daily-block{margin-top:24px;border-radius:17px;padding:18px;background:#f3f7f7;border:1px solid #e0e9e9}.daily-block h3{margin:0 0 9px;font-size:21px}.daily-block p{margin:0 0 12px;font-size:15px}.stay-block{background:#fff8ee;border-color:#f0e3d2}.place{align-items:center}.place>div{min-width:0}.place a{white-space:nowrap}.detail-tile{overflow-wrap:anywhere}
 @media(max-width:700px){.wrap{padding-left:15px;padding-right:15px}.nav .wrap{gap:22px}.nav a{font-size:13px}.panel{padding:17px}.place{gap:8px}.place a{font-size:13px}.detail-grid{grid-template-columns:1fr}.day-hero{margin-top:8px}.is-day .nav .wrap{justify-content:flex-start}.is-day #days{padding-top:18px}.daybtn{padding:10px 14px}.grid{grid-template-columns:1fr}.visual{height:200px}.card .body{padding:18px}.card h3{font-size:18px}}
 @media print{.nav,.topbar,.daynav,.switches,#dayActions,.btns,.footer{display:none!important}body{background:white}.hero{min-height:0}.panel,.detail-tile,.daily-block{box-shadow:none;break-inside:avoid}.section{padding:0}a{text-decoration:none}}
+</style><style>
+.route-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}.route-links a{display:inline-flex;align-items:center;min-height:40px;padding:7px 11px;border-radius:10px;background:#fff;color:#21556b;font-weight:750;font-size:13px;text-decoration:none;border:1px solid #d7e3e5}.route-links a:hover{background:#e7f0f2}
+@media(max-width:600px){.route-links a{width:100%;justify-content:space-between}.transport-block p{font-size:14px;line-height:1.9}}
 </style></head><body>
 <header class="hero" id="top"><div class="wrap"><div class="eyebrow">HOKKAIDO · 18–23 NOVEMBER 2026</div><h1>北海道<br>慢遊六日</h1><p>從小樽的運河燈影，到札幌的冬日街景。選喜歡的景點、吃想吃的美食，按照自己的步調旅行。</p><div class="pills"><span class="pill">6 天 5 夜</span><span class="pill">小樽・札幌</span><span class="pill">自由選擇・免登入</span></div></div></header>
 <nav class="nav" aria-label="網站導覽"><div class="wrap"><a href="#overview" id="homeNav">⌂ 旅程總覽</a><a href="#day-1" id="daysNav">📅 每日行程</a><a class="overview-only" href="#places">景點</a><a class="overview-only" href="#food">美食</a><a class="overview-only" href="#transport">交通</a><a class="overview-only" href="#stay">住宿比較</a><a class="overview-only" href="#essentials">出發資訊</a></div></nav>
@@ -49,7 +52,7 @@ const days=[
 {date:"11/19",dow:"週四",title:"小樽老街・玻璃與音樂盒",sub:"小樽市區｜運河與堺町通可安排同一天",main:[["小樽運河・舊手宮線周邊","先欣賞歷史港町景色，再慢慢往堺町通方向走。","Otaru Canal"],["堺町通・北一硝子","玻璃工藝、特色店舖與街景拍照。","Kitaichi Glass Otaru"],["小樽音樂盒堂・LeTAO","音樂盒、甜點與伴手禮，適合自由停留。","Otaru Music Box Museum"]],other:[["小樽運河遊船","需查當天船班、天候與預約情況。","Otaru Canal Cruise"],["天狗山展望台","須另外安排交通；視天氣與纜車營運決定。","Otaru Tenguyama Ropeway"],["小樽藝術村","喜歡歷史建築與藝術可替換部分購物時間。","Otaru Art Base"]],rain:[["音樂盒堂・北一硝子","室內店舖與工藝參觀。","Otaru Music Box Museum"],["小樽藝術村","依展館開放情況參觀。","Otaru Art Base"]]},
 {date:"11/20",dow:"週五",title:"移動札幌・冬季燈飾首日",sub:"小樽 → 札幌｜札幌住宿這晚仍待確認",main:[["上午小樽自由活動","補買伴手禮、咖啡或重訪喜歡的街道。","Otaru Station"],["搭 JR 前往札幌","抵達後寄放行李，以札幌站周邊活動為主。","Sapporo Station"],["札幌白色燈飾節","大通會場 11/20 起登場，16:30–22:00 點燈，適合晚餐後散步。","Odori Park Sapporo"]],other:[["北海道廳舊本廳舍周邊","市中心歷史建築散步，依開放情況安排。","Former Hokkaido Government Office Building"],["札幌站商場","百貨、地下街與伴手禮採買。","Sapporo Station shopping"]],rain:[["札幌站地下街與商場","可避開戶外低溫或雨雪。","Sapporo Stellar Place"],["札幌市中心美食","找一間喜歡的湯咖哩或拉麵店。","Sapporo soup curry"]]},
 {date:"11/21",dow:"週六",title:"札幌歷史・城市散步",sub:"札幌市中心｜步行與短程大眾運輸搭配",main:[["北海道廳舊本廳舍・周邊街景","紅磚建築與城市歷史。","Former Hokkaido Government Office Building"],["札幌時計台・大通公園","札幌經典地標與城市散步。","Sapporo Clock Tower"],["狸小路・薄野美食","購物與晚餐；可選湯咖哩、成吉思汗烤肉。","Tanukikoji Shopping Street"]],other:[["札幌電視塔","喜歡城市視野可考慮登塔。","Sapporo TV Tower"],["北海道大學校園","喜歡校園景色可安排短程散步。","Hokkaido University Sapporo"]],rain:[["狸小路商店街","有遮蔽的購物街與餐飲。","Tanukikoji Shopping Street"],["札幌站周邊商場","購物、甜點與休息。","Sapporo Stellar Place"]]},
-{date:"11/22",dow:"週日",title:"特色體驗・札幌自由選擇",sub:"選一個主題就好｜不要塞滿最後一天",main:[["白色戀人公園","甜點、園區建築與伴手禮；收費區請查官方公告。","Shiroi Koibito Park"],["返回市中心自由購物","札幌站、狸小路或大通周邊自由選擇。","Sapporo Station"],["白色燈樹節夜景","如果前一天沒看夠，可再欣賞不同區域。","Odori Park Sapporo"]],other:[["北海道神宮・圓山周邊","偏好自然與文化可改選這一區。","Hokkaido Shrine"],["札幌啤酒博物館","喜歡產業歷史與建築，可查開館資訊。","Sapporo Beer Museum"],["藻岩山夜景","需另搭交通工具，並視天氣與纜車營運決定。","Mt Moiwa Ropeway"]],rain:[["白色戀人公園室內區域","留意部分區域需門票。","Shiroi Koibito Park"],["札幌站商場與地下街","採買伴手禮、找餐廳。","Sapporo Station"]]},
+{date:"11/22",dow:"週日",title:"特色體驗・札幌自由選擇",sub:"選一個主題就好｜不要塞滿最後一天",main:[["白色戀人公園","甜點、園區建築與伴手禮；收費區請查官方公告。","Shiroi Koibito Park"],["返回市中心自由購物","札幌站、狸小路或大通周邊自由選擇。","Sapporo Station"],["白色燈飾節夜景","如果前一天沒看夠，可再欣賞不同區域。","Odori Park Sapporo"]],other:[["北海道神宮・圓山周邊","偏好自然與文化可改選這一區。","Hokkaido Shrine"],["札幌啤酒博物館","喜歡產業歷史與建築，可查開館資訊。","Sapporo Beer Museum"],["藻岩山夜景","需另搭交通工具，並視天氣與纜車營運決定。","Mt Moiwa Ropeway"]],rain:[["白色戀人公園室內區域","留意部分區域需門票。","Shiroi Koibito Park"],["札幌站商場與地下街","採買伴手禮、找餐廳。","Sapporo Station"]]},
 {date:"11/23",dow:"週一",title:"返回臺灣",sub:"札幌 → 新千歲機場｜14:10 班機",main:[["退房並前往札幌站","確認行李與護照，提早出發。","Sapporo Station"],["搭 JR 前往新千歲機場","建議保留足夠報到、安檢與國際線航廈移動時間。","New Chitose Airport"],["機場辦理報到與返程","SL393 預定 14:10 起飛，請依機票與航空公司最新資訊。","New Chitose Airport International Terminal"]],other:[["新千歲機場伴手禮","僅在完成報到且時間充裕時選購。","New Chitose Airport shopping"]],rain:[["直接前往機場","天候不佳時優先確保返程交通。","New Chitose Airport"]]}
 ];
 const featured=[
@@ -79,13 +82,19 @@ const stayByDay=[
 ["退房・返程","New Chitose Airport","當日無住宿"]
 ];
 const transportByDay=[
-"新千歲機場 → 小樽：JR Airport 列車，部分班次直達。",
-"小樽市區：以步行為主，天氣不佳可短程搭車。",
-"小樽 → 札幌：搭 JR；先寄放行李再逛市中心。",
-"札幌市中心：步行、地鐵與短程計程車彈性搭配。",
-"札幌市區：依選擇的景點搭地鐵或公車。",
-"札幌 → 新千歲機場：請提早搭 JR，預留國際線報到時間。"
+"抵達新千歲機場後，依指標前往 JR 新千歲機場站（位於國內線航廈地下樓層）。搭乘往小樽方向的快速 Airport 列車；若班次只到札幌，則在札幌轉乘。抵達小樽站後，步行或短程搭車前往飯店。班次與票價請以 JR 北海道當日資訊為準。",
+"小樽運河、堺町通與周邊街區以步行為主。若要加選天狗山，需額外安排公車或計程車，避免與堺町通行程排得太緊。",
+"退房後從小樽站搭 JR 前往札幌站。抵達後先處理行李寄放與 11/20 住宿入住；白色燈飾節安排在傍晚之後。11/20 飯店仍待訂，勿預設與 11/21 住宿相同。",
+"北海道廳舊本廳舍、時計台、大通公園可規劃成市中心步行路線。若天氣冷或路面濕滑，改搭地鐵或短程計程車，不必勉強走完。",
+"白色戀人公園位於宮之澤方向，可搭東西線到宮之澤站後步行；北海道神宮、札幌啤酒博物館與藻岩山分屬不同區域，建議只挑一個主題，不要全部塞入同一天。",
+"返程航班預定 14:10 起飛。建議以約 11:00 前抵達新千歲機場國際線航廈為規劃目標，並提前查 JR 班次與運行狀態。機場站在國內線地下樓層，需預留步行到國際線航廈的時間；若列車異常，優先查詢替代交通。"
 ];
+const railLinks=[
+["JR 北海道：機場交通","https://www.jrhokkaido.co.jp/global/english/travel/airport.html"],
+["JR 北海道：列車運行資訊","https://www.jrhokkaido.co.jp/global/english/"],
+["新千歲機場：官方網站","https://www.hokkaido-airports.com/en/new-chitose/"]
+];
+function railLinksHtml(day){return '<div class="route-links">'+railLinks.filter((_,i)=>day===0||day===2||day===5?true:i===1).map(x=>'<a target="_blank" rel="noopener" href="'+x[1]+'">'+x[0]+' ↗</a>').join('')+'</div>'}
 function map(q){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
 function view(){const m=location.hash.match(/^#day-(\d)$/);return m&&+m[1]>=1&&+m[1]<=6?+m[1]-1:null}
 function go(i){location.hash="#day-"+(i+1);show();window.scrollTo(0,0)}
