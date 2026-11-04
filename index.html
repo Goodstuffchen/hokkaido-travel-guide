@@ -57,12 +57,12 @@ const featured=[
 function featuredHtml(day){return '<h3 style="margin:24px 0 8px">✨ 今日重點與實用資訊</h3><div class="detail-grid">'+featured[day].map(x=>'<div class="detail-tile"><span class="price-chip">'+x.cost+'</span><h4>'+x.name+'</h4><p>'+x.desc+'</p><div class="btns"><a href="'+map(x.map)+'" target="_blank" rel="noopener">地圖 ↗</a><a href="'+x.url+'" target="_blank" rel="noopener">官方資訊 ↗</a></div></div>').join('')+'</div><div class="compact-note">營業時間、票價與船班可能異動；請以連結的官方最新公告為準。</div>'}
 const nav=document.getElementById("daynav"),panel=document.getElementById("daypanel"),overviewDays=document.getElementById("overviewDays");let selected=0,mode="main";
 const foodByDay=[
-[["小樽站周邊海鮮或拉麵","Otaru Station restaurants"]],
-[["堺町通甜點・咖啡","Otaru Sakaimachi cafe"],["小樽壽司・海鮮丼","Otaru sushi"]],
-[["札幌站周邊湯咖哩","Sapporo Station soup curry"]],
-[["狸小路・薄野成吉思汗烤肉","Susukino Jingisukan"],["札幌味噌拉麵","Sapporo miso ramen"]],
-[["白色戀人公園甜點","Shiroi Koibito Park cafe"],["札幌站周邊晚餐","Sapporo Station restaurants"]],
-[["新千歲機場餐飲","New Chitose Airport restaurants"]]
+[{name:"若鶏時代なると 本店",desc:"小樽名物炸半雞，適合抵達後想吃熱食。",q:"若鶏時代なると 本店 小樽",area:"小樽站周邊"},{name:"小樽三角市場",desc:"多家海鮮丼與鮮魚店集中；若抵達太晚，可留到隔天。",q:"小樽三角市場",area:"小樽站旁"}],
+[{name:"LeTAO 本店",desc:"堺町通散步時吃雙層起司蛋糕，也能買伴手禮。",q:"ルタオ本店 小樽",area:"堺町通"},{name:"北菓樓 小樽本館",desc:"北海道甜點與伴手禮，順路逛石造建築。",q:"北菓楼 小樽本館",area:"堺町通"},{name:"おたる政寿司 本店",desc:"小樽壽司老店，想安排一頓正式海鮮餐可優先比較。",q:"おたる政寿司 本店",area:"壽司屋通"}],
+[{name:"奥芝商店 駅前創成寺",desc:"札幌站周邊湯咖哩，蝦味高湯是特色。",q:"奥芝商店 駅前創成寺",area:"札幌站東側"},{name:"Rojiura Curry SAMURAI. APIA",desc:"位於札幌站地下街，天氣不好時方便用餐。",q:"Rojiura Curry SAMURAI. 札幌駅アピア",area:"札幌站地下街"}],
+[{name:"士別成吉思汗 すすきの店",desc:"薄野羊肉燒烤，可作為晚餐選項。",q:"士別成吉思汗 すすきの店",area:"薄野"},{name:"味の三平",desc:"札幌味噌拉麵老店，適合白天市中心行程。",q:"味の三平 札幌",area:"大通周邊"}],
+[{name:"白色戀人公園",desc:"園區咖啡甜點，可依參觀時間安排。",q:"白い恋人パーク",area:"宮之澤"},{name:"Soup Curry hirihiri 2號",desc:"回到札幌站周邊後，可選擇暖身的湯咖哩。",q:"スープカレー hirihiri 2号",area:"札幌站西側"}],
+[{name:"新千歲機場餐飲區",desc:"先完成報到、確認時間，再選擇機場內餐點與伴手禮。",q:"新千歳空港 国内線 レストラン",area:"新千歲機場"}]
 ];
 const stayByDay=[
 ["Hotel Torifito Otaru Canal","Hotel Torifito Otaru Canal","已訂房"],
@@ -87,7 +87,7 @@ function overview(){overviewDays.innerHTML=days.map((d,i)=>'<a class="card" styl
 function show(){const v=view(),isDay=v!==null;document.getElementById("overview").hidden=isDay;document.querySelectorAll("#main > section").forEach(el=>{if(el.id!=="overview"&&el.id!=="days")el.hidden=isDay});document.getElementById("days").hidden=!isDay;document.querySelector(".hero").hidden=isDay;document.getElementById("homeNav").setAttribute("aria-current",isDay?"false":"page");if(!isDay){document.title="北海道慢遊六日｜旅程總覽";return}selected=v;mode="main";document.title=days[v].date+"｜"+days[v].title+"・北海道慢遊六日";render()}
 function render(){const d=days[selected],titles={main:"推薦路線",other:"其他選擇",rain:"雨天方案"};nav.innerHTML=days.map((x,i)=>'<button class="daybtn '+(i===selected?'active':'')+'" data-day="'+i+'"><b>'+x.date+'</b><small>'+x.dow+'</small></button>').join("");
 panel.innerHTML='<div class="panelhead"><div><span class="kicker">DAY '+(selected+1)+' / ONLY THIS DAY</span><h3>'+d.date+'｜'+d.title+'</h3><p class="muted">'+d.sub+'</p></div><span class="tag">'+d.dow+'</span></div><div class="switches">'+Object.keys(titles).map(k=>'<button class="switch '+(k===mode?'active':'')+'" data-mode="'+k+'">'+titles[k]+'</button>').join('')+'</div>'+featuredHtml(selected)+d[mode].map((p,i)=>'<div class="place"><div><h4>'+(i+1)+'. '+p[0]+'</h4><p>'+p[1]+'</p></div><a href="'+map(p[2])+'" target="_blank" rel="noopener">地圖 ↗</a></div>').join('')+
-'<div style="border-top:2px solid #e6e7e5;margin-top:20px;padding-top:16px"><h3>🍜 今日美食</h3>'+foodByDay[selected].map(x=>'<div class="place"><div><h4>'+x[0]+'</h4><p>依當日營業與排隊狀況選擇</p></div><a target="_blank" rel="noopener" href="'+map(x[1])+'">找餐廳 ↗</a></div>').join('')+
+'<div style="border-top:2px solid #e6e7e5;margin-top:20px;padding-top:16px"><h3>🍜 今日美食</h3><p class="muted">依當日路線安排的真實店家；不是已訂位，請先確認營業與排隊狀況。</p>'+foodByDay[selected].map(x=>'<div class="place"><div><span class="price-chip">'+x.area+'</span><h4>'+x.name+'</h4><p>'+x.desc+'</p></div><a target="_blank" rel="noopener" href="'+map(x.q)+'">地圖 ↗</a></div>').join('')+
 '<h3 style="margin-top:25px">🚆 今日交通</h3><p>'+transportByDay[selected]+'</p><h3 style="margin-top:25px">🏨 今晚住宿</h3><p><b>'+stayByDay[selected][0]+'</b>｜'+stayByDay[selected][2]+'</p><div class="btns"><a class="btn alt" href="'+map(stayByDay[selected][1])+'" target="_blank" rel="noopener">住宿地圖 ↗</a>'+(selected===2?'<a class="btn" href="#overview">回總覽比較飯店 ↗</a>':'')+'</div></div>';
 nav.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>go(+b.dataset.day));panel.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;render()});const n=document.getElementById("nextDay");n.textContent=selected===5?"← 回到總覽":"下一天 →";n.onclick=()=>selected===5?location.hash="#overview":go(selected+1)}
 overview();window.addEventListener("hashchange",()=>{show();if(view()!==null)window.scrollTo(0,0)});show();</script></body></html>
